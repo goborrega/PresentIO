@@ -20,12 +20,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     let notifications = NotificationManager()
     var devices : [AVCaptureDevice] = []
-    
     var deviceSessions : [AVCaptureDevice: Skin] = [:]
+    
+    var deviceSettings : [Device] = []
+    var deviceSettingsLoaded = false
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
 
-        
         // Opt-in for getting visibility on connected screen capture devices (iphone/ipad)
         DeviceUtils.registerForScreenCaptureDevices()
         
@@ -37,6 +38,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.refreshDevices()
        
     }
+    
+    func loadDeviceSettings() {
+        let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(Device.ArchiveURL.path!) as? [Device]
+        if loaded != nil {
+            self.deviceSettings = loaded!
+        } else {
+            self.devices = []
+        }
+        deviceSettingsLoaded = true
+    }
+    
+    func saveDeviceSettings() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.deviceSettings, toFile: Device.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save device settings...")
+        }
+        deviceSettingsLoaded = true
+    }
+    func findDeviceSettings(device: AVCaptureDevice) -> Device {
+        if (!deviceSettingsLoaded ) {
+            loadDeviceSettings()
+        }
+        for d in deviceSettings {
+            if d.uid == device.uniqueID {
+                return d
+            }
+        }
+        
+        let newDevice = Device(fromDevice: device)!
+        self.deviceSettings.append(newDevice)
+        return newDevice
+    }
+    
 
     func applicationWillTerminate(aNotification: NSNotification) {
         
@@ -141,6 +175,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 //        self.session.commitConfiguration()
         
     }
+    
+    
 
 }
 

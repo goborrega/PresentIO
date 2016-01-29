@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="Skin" customModule="PresentIO" customModuleProvider="target">
@@ -20,7 +20,7 @@
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-CN-NNN">
                     <rect key="frame" x="0.0" y="-38" width="435" height="721"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iPad_White" id="pQD-qN-Pr5"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iPad_white" id="pQD-qN-Pr5"/>
                 </imageView>
                 <customView autoresizesSubviews="NO" wantsLayer="YES" canDrawConcurrently="YES" focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XdJ-Cc-xK7">
                     <rect key="frame" x="25" y="66" width="384" height="512"/>
@@ -39,7 +39,7 @@
         <userDefaultsController representsSharedInstance="YES" id="nmt-Kz-kBN"/>
     </objects>
     <resources>
-        <image name="iPad_White" width="1326.109130859375" height="1963.6363525390625"/>
+        <image name="iPad_white" width="1326.109130859375" height="1963.6363525390625"/>
         <image name="resize-handle" width="12" height="12"/>
     </resources>
 </document>

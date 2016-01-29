@@ -24,6 +24,7 @@ class Skin: NSView {
     var session : AVCaptureSession!     // Provided by the parent window/controller
     var input   : AVCaptureDeviceInput?
     var device = DeviceUtils(deviceType: .iPhone)
+    var deviceSettings : Device?
     
     let notifications = NotificationManager()
     internal var ownerWindow : NSWindow?
@@ -37,6 +38,7 @@ class Skin: NSView {
     var trackingArea : NSTrackingArea?
     
     let ResizeHandleSize : CGFloat = 30
+    
     
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
@@ -156,6 +158,9 @@ class Skin: NSView {
                         self.updateAspect()
                     })
                     
+                    // load existing device settings that might have been previously saved
+                    getDeviceSettings(newValue!)
+                    
                 } catch let error as NSError {
                     self.displayError(error)
                 }
@@ -200,18 +205,27 @@ class Skin: NSView {
                     var windowSize = self.window!.frame.size //self.device.getWindowSize()
                     windowSize = windowSize.orientation != self.device.orientation ? windowSize.rotated() : windowSize
                     
-                    
-                    // Calculate new size to fit screen
-                    var screenFrame = self.window!.screen!.visibleFrame
-                    screenFrame.size.height -= 50
-                    screenFrame.size.width -= 50
-                    let scaledToScreenSize = NSSize(fromCGSize: windowSize).scaleToFit(screenFrame.size)
-                    
-                    // Center the window on screen
-                    centerWindow(scaledToScreenSize)
+                    if (    self.deviceSettings != nil
+                        &&  self.deviceSettings?.hasPreviousLocation(self.device.orientation) == true ) {
+                            
+                            let windowRect = self.deviceSettings!.savedSettingForOrientation(self.device.orientation)
+                            windowSize =  windowRect.size
+                            positionWindow(windowRect)
+                            
+                    } else {
+                        // Calculate new size to fit screen. -50 is just to give some margins for OS menubar, etc.
+                        var screenFrame = self.window!.screen!.visibleFrame
+                        screenFrame.size.height -= 50
+                        screenFrame.size.width -= 50
+                        windowSize = NSSize(fromCGSize: windowSize).scaleToFit(screenFrame.size)
+                        
+                        // Center the window on screen
+                        centerWindow(windowSize)
+                    }
                     
                     // Resize the internal view to the calculated size / rect
-                    updateViewsToWindow(scaledToScreenSize)
+                    updateViewsToWindow(windowSize)
+                    
                 }
             }
             return
@@ -223,6 +237,11 @@ class Skin: NSView {
     func centerWindow(windowSize : NSSize) {
         self.window!.aspectRatio = windowSize
         self.window!.setFrame(DeviceUtils.getCenteredRect(windowSize, screenFrame: self.window!.screen!.frame), display:true)
+        // self.window?.center() does not work
+    }
+    func positionWindow(windowRect : NSRect) {
+        self.window!.aspectRatio = windowRect.size
+        self.window!.setFrame(windowRect, display:true)
         // self.window?.center() does not work
     }
     
@@ -265,7 +284,7 @@ class Skin: NSView {
             options: [NSTrackingAreaOptions.ActiveAlways, .MouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)
     }
-
+    
     
     func displayError(error: NSError?) {
         dispatch_async(dispatch_get_main_queue(), {
@@ -318,22 +337,50 @@ class Skin: NSView {
     
     override func mouseDragged(theEvent: NSEvent) {
         
-        if isResize {
-            return
+        if !isResize {
+            
+            let curLocation = NSEvent.mouseLocation()
+            
+            var newOrigin = NSPoint(
+                x: curLocation.x - initialLocation!.x,
+                y: curLocation.y - initialLocation!.y)
+            
+            let screenFrame = NSScreen.mainScreen()?.frame
+            if((newOrigin.y + window!.frame.size.height) > (screenFrame!.origin.y + screenFrame!.size.height)) {
+                newOrigin.y = screenFrame!.origin.y + (screenFrame!.size.height - window!.frame.size.height)
+            }
+            
+            self.window!.setFrameOrigin(newOrigin)
         }
-        let curLocation = NSEvent.mouseLocation()
-        
-        var newOrigin = NSPoint(
-            x: curLocation.x - initialLocation!.x,
-            y: curLocation.y - initialLocation!.y)
-        
-        let screenFrame = NSScreen.mainScreen()?.frame
-        if((newOrigin.y + window!.frame.size.height) > (screenFrame!.origin.y + screenFrame!.size.height)) {
-            newOrigin.y = screenFrame!.origin.y + (screenFrame!.size.height - window!.frame.size.height)
-        }
-        
-        self.window!.setFrameOrigin(newOrigin)
+        updateDeviceSettings()
         
     }
+    override func viewDidEndLiveResize() {
+        updateDeviceSettings()
+    }
+    
+    func updateDeviceSettings() {
+        // Update current device size/location settings based on its current movement
+        if(self.deviceSettings != nil) {
+            if self.device.orientation == DeviceOrientation.Portrait {
+                self.deviceSettings!.portraitRect = window!.frame
+            } else {
+                self.deviceSettings!.landscapeRect = window!.frame
+            }
+            Swift.print("Updating settings to \(window!.frame)")
+        }
+        saveDeviceSettins()
+
+    }
+    func getDeviceSettings(device: AVCaptureDevice) {
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        self.deviceSettings = appDelegate.findDeviceSettings(device)
+    }
+    func saveDeviceSettins() {
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.saveDeviceSettings()
+    }
+    
+    
     
 }
