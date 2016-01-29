@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="Skin" customModule="PresentIO" customModuleProvider="target">
+            <connections>
+                <outlet property="deviceFrameImage" destination="Vqy-CN-NNN" id="Ltj-TW-etw"/>
+                <outlet property="previewView" destination="XdJ-Cc-xK7" id="GvH-m5-hFY"/>
+                <outlet property="resizeHandle" destination="ud6-eS-S8e" id="cWe-mQ-TWA"/>
+                <outlet property="view" destination="Lma-TF-kFe" id="is6-Ue-xlP"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view wantsLayer="YES" id="Lma-TF-kFe">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="700"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-CN-NNN">
+                    <rect key="frame" x="0.0" y="0.0" width="347" height="700"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iphone6_white" id="pQD-qN-Pr5"/>
+                </imageView>
+                <customView autoresizesSubviews="NO" wantsLayer="YES" canDrawConcurrently="YES" focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XdJ-Cc-xK7">
+                    <rect key="frame" x="25" y="84" width="301" height="531"/>
+                </customView>
+                <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ud6-eS-S8e">
+                    <rect key="frame" x="335" y="0.0" width="12" height="12"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="resize-handle" id="zaH-oU-Euf"/>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="ud6-eS-S8e" secondAttribute="bottom" id="Uus-ye-Awt"/>
+                <constraint firstAttribute="trailing" secondItem="ud6-eS-S8e" secondAttribute="trailing" id="dMb-0C-iiO"/>
+            </constraints>
+            <animations/>
+            <point key="canvasLocation" x="374.5" y="243"/>
+        </view>
+        <userDefaultsController representsSharedInstance="YES" id="nmt-Kz-kBN"/>
+    </objects>
+    <resources>
+        <image name="iphone6_white" width="144.24000549316406" height="289"/>
+        <image name="resize-handle" width="12" height="12"/>
+    </resources>
+</document>

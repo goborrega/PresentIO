@@ -1,43 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6233" systemVersion="14A329f" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6233"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6751"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="Document" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="Document" customModule="PresentIO" customModuleProvider="target">
             <connections>
+                <outlet property="cmbSource" destination="ikO-DI-xWu" id="hVU-wA-Toc"/>
+                <outlet property="lblResolution" destination="LHt-c2-8j1" id="SiR-UK-UVy"/>
+                <outlet property="previewView" destination="jux-Dr-atG" id="CQi-uF-Lq1"/>
                 <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Device" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window">
+            <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenAuxiliary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="133" y="235" width="507" height="413"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="contentRect" x="133" y="235" width="347" height="701"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <value key="minSize" type="size" width="94" height="86"/>
             <view key="contentView" id="gIp-Ho-8D9">
-                <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="347" height="701"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-                        <rect key="frame" x="119" y="195" width="268" height="22"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Your document contents here" id="JDq-Ah-v2f">
-                            <font key="font" metaFont="system" size="18"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oxm-KL-QKb">
+                        <rect key="frame" x="0.0" y="0.0" width="347" height="701"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iphone6_white" id="fPH-QL-qpb"/>
+                    </imageView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LHt-c2-8j1">
+                        <rect key="frame" x="186" y="616" width="138" height="14"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Resolution" id="WPg-FV-Ny0">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <customView wantsLayer="YES" canDrawConcurrently="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jux-Dr-atG">
+                        <rect key="frame" x="26" y="88" width="296" height="524"/>
+                    </customView>
+                    <popUpButton focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ikO-DI-xWu" userLabel="cmbSource">
+                        <rect key="frame" x="210" y="643" width="28" height="21"/>
+                        <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" alignment="center" lineBreakMode="truncatingTail" focusRingType="none" inset="2" id="amc-mf-rCH" userLabel="Items">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="sJl-RV-YYe"/>
+                        </popUpButtonCell>
+                        <connections>
+                            <binding destination="-2" name="content" keyPath="devices" id="ZH0-xN-6tv">
+                                <dictionary key="options">
+                                    <bool key="NSInsertsNullPlaceholder" value="YES"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="-2" name="contentValues" keyPath="devices.localizedName" previousBinding="ZH0-xN-6tv" id="VZz-Oo-exa">
+                                <dictionary key="options">
+                                    <bool key="NSInsertsNullPlaceholder" value="YES"/>
+                                </dictionary>
+                            </binding>
+                            <binding destination="-2" name="selectedObject" keyPath="selectedDevice" previousBinding="VZz-Oo-exa" id="Btj-Dh-qBG"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="OG3-1c-Sd0"/>
-                    <constraint firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="s6i-b7-llN"/>
+                    <constraint firstAttribute="trailing" secondItem="jux-Dr-atG" secondAttribute="trailing" constant="25" id="0rG-jY-sxO"/>
+                    <constraint firstItem="Oxm-KL-QKb" firstAttribute="top" secondItem="gIp-Ho-8D9" secondAttribute="top" id="2pz-TC-uYA"/>
+                    <constraint firstItem="Oxm-KL-QKb" firstAttribute="leading" secondItem="gIp-Ho-8D9" secondAttribute="leading" id="5LG-SE-ZcR"/>
+                    <constraint firstItem="jux-Dr-atG" firstAttribute="top" secondItem="gIp-Ho-8D9" secondAttribute="top" constant="89" id="6VT-uW-CEb"/>
+                    <constraint firstAttribute="centerY" secondItem="jux-Dr-atG" secondAttribute="centerY" id="BcQ-XG-q0J"/>
+                    <constraint firstAttribute="centerX" secondItem="jux-Dr-atG" secondAttribute="centerX" id="J63-bc-f4u"/>
+                    <constraint firstAttribute="centerY" secondItem="Oxm-KL-QKb" secondAttribute="centerY" id="V8i-qb-zGF"/>
+                    <constraint firstAttribute="bottom" secondItem="Oxm-KL-QKb" secondAttribute="bottom" id="gtC-at-bki"/>
+                    <constraint firstAttribute="trailing" secondItem="Oxm-KL-QKb" secondAttribute="trailing" id="jfA-CA-JFc"/>
+                    <constraint firstAttribute="centerX" secondItem="Oxm-KL-QKb" secondAttribute="centerX" id="mv3-zQ-XBe"/>
+                    <constraint firstItem="jux-Dr-atG" firstAttribute="leading" secondItem="gIp-Ho-8D9" secondAttribute="leading" constant="26" id="pMQ-DX-qxj"/>
+                    <constraint firstAttribute="bottom" secondItem="jux-Dr-atG" secondAttribute="bottom" constant="88" id="rmU-pe-iwf"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
             </connections>
+            <point key="canvasLocation" x="343.5" y="497.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="GwL-fW-o94"/>
     </objects>
+    <resources>
+        <image name="iphone6_white" width="144.24000549316406" height="289"/>
+    </resources>
 </document>

@@ -8,11 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		A240ADE11AA11D9D00A19D30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240ADE01AA11D9D00A19D30 /* AppDelegate.swift */; };
-		A240ADE31AA11D9D00A19D30 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240ADE21AA11D9D00A19D30 /* Document.swift */; };
-		A240ADE61AA11D9D00A19D30 /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = A240ADE41AA11D9D00A19D30 /* Document.xib */; };
 		A240ADE81AA11D9D00A19D30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A240ADE71AA11D9D00A19D30 /* Images.xcassets */; };
 		A240ADEB1AA11D9D00A19D30 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A240ADE91AA11D9D00A19D30 /* MainMenu.xib */; };
 		A240ADF71AA11D9D00A19D30 /* PresentIOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240ADF61AA11D9D00A19D30 /* PresentIOTests.swift */; };
+		A240AE011AA11EAB00A19D30 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A240AE001AA11EAB00A19D30 /* AVFoundation.framework */; };
+		A240AE0B1AA2504200A19D30 /* CoreMediaIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A240AE0A1AA2504200A19D30 /* CoreMediaIO.framework */; };
+		A240AE0D1AA304B200A19D30 /* DeviceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A240AE0C1AA304B200A19D30 /* DeviceUtils.swift */; };
+		A25AC01B1ABB74BD00DC1AB4 /* Skin_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = A25AC01A1ABB74BD00DC1AB4 /* Skin_iPad.xib */; };
+		A2820E691AAE538000393CAA /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2820E681AAE538000393CAA /* Skin.swift */; };
+		A2AF97921AC7E65A0052CB76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AF97911AC7E65A0052CB76 /* Extensions.swift */; };
+		A2BEAB7D1AAAEB1F00FDFC72 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2BEAB7C1AAAEB1F00FDFC72 /* NotificationManager.swift */; };
+		A2BEAB811AAD0A9900FDFC72 /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2BEAB801AAD0A9900FDFC72 /* Skin.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +35,19 @@
 		A240ADDB1AA11D9D00A19D30 /* PresentIO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PresentIO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A240ADDF1AA11D9D00A19D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A240ADE01AA11D9D00A19D30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A240ADE21AA11D9D00A19D30 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		A240ADE51AA11D9D00A19D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Document.xib; sourceTree = "<group>"; };
 		A240ADE71AA11D9D00A19D30 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A240ADEA1AA11D9D00A19D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A240ADF01AA11D9D00A19D30 /* PresentIOTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresentIOTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A240ADF51AA11D9D00A19D30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A240ADF61AA11D9D00A19D30 /* PresentIOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentIOTests.swift; sourceTree = "<group>"; };
+		A240AE001AA11EAB00A19D30 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A240AE0A1AA2504200A19D30 /* CoreMediaIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMediaIO.framework; path = System/Library/Frameworks/CoreMediaIO.framework; sourceTree = SDKROOT; };
+		A240AE0C1AA304B200A19D30 /* DeviceUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceUtils.swift; sourceTree = "<group>"; };
+		A25AC01A1ABB74BD00DC1AB4 /* Skin_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Skin_iPad.xib; sourceTree = "<group>"; };
+		A2820E681AAE538000393CAA /* Skin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		A2AF97911AC7E65A0052CB76 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A2BEAB7C1AAAEB1F00FDFC72 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		A2BEAB801AAD0A9900FDFC72 /* Skin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A240AE0B1AA2504200A19D30 /* CoreMediaIO.framework in Frameworks */,
+				A240AE011AA11EAB00A19D30 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +73,8 @@
 		A240ADD21AA11D9D00A19D30 = {
 			isa = PBXGroup;
 			children = (
+				A240AE0A1AA2504200A19D30 /* CoreMediaIO.framework */,
+				A240AE001AA11EAB00A19D30 /* AVFoundation.framework */,
 				A240ADDD1AA11D9D00A19D30 /* PresentIO */,
 				A240ADF31AA11D9D00A19D30 /* PresentIOTests */,
 				A240ADDC1AA11D9D00A19D30 /* Products */,
@@ -78,11 +94,15 @@
 			isa = PBXGroup;
 			children = (
 				A240ADE01AA11D9D00A19D30 /* AppDelegate.swift */,
-				A240ADE21AA11D9D00A19D30 /* Document.swift */,
-				A240ADE41AA11D9D00A19D30 /* Document.xib */,
-				A240ADE71AA11D9D00A19D30 /* Images.xcassets */,
+				A2820E681AAE538000393CAA /* Skin.swift */,
 				A240ADE91AA11D9D00A19D30 /* MainMenu.xib */,
+				A2BEAB801AAD0A9900FDFC72 /* Skin.xib */,
+				A25AC01A1ABB74BD00DC1AB4 /* Skin_iPad.xib */,
+				A240AE0C1AA304B200A19D30 /* DeviceUtils.swift */,
+				A2BEAB7C1AAAEB1F00FDFC72 /* NotificationManager.swift */,
+				A240ADE71AA11D9D00A19D30 /* Images.xcassets */,
 				A240ADDE1AA11D9D00A19D30 /* Supporting Files */,
+				A2AF97911AC7E65A0052CB76 /* Extensions.swift */,
 			);
 			path = PresentIO;
 			sourceTree = "<group>";
@@ -156,7 +176,9 @@
 		A240ADD31AA11D9D00A19D30 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = Borrega;
 				TargetAttributes = {
 					A240ADDA1AA11D9D00A19D30 = {
@@ -192,7 +214,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A240ADE61AA11D9D00A19D30 /* Document.xib in Resources */,
+				A25AC01B1ABB74BD00DC1AB4 /* Skin_iPad.xib in Resources */,
+				A2BEAB811AAD0A9900FDFC72 /* Skin.xib in Resources */,
 				A240ADE81AA11D9D00A19D30 /* Images.xcassets in Resources */,
 				A240ADEB1AA11D9D00A19D30 /* MainMenu.xib in Resources */,
 			);
@@ -212,8 +235,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A240ADE31AA11D9D00A19D30 /* Document.swift in Sources */,
+				A2AF97921AC7E65A0052CB76 /* Extensions.swift in Sources */,
+				A240AE0D1AA304B200A19D30 /* DeviceUtils.swift in Sources */,
+				A2BEAB7D1AAAEB1F00FDFC72 /* NotificationManager.swift in Sources */,
 				A240ADE11AA11D9D00A19D30 /* AppDelegate.swift in Sources */,
+				A2820E691AAE538000393CAA /* Skin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,14 +262,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A240ADE41AA11D9D00A19D30 /* Document.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A240ADE51AA11D9D00A19D30 /* Base */,
-			);
-			name = Document.xib;
-			sourceTree = "<group>";
-		};
 		A240ADE91AA11D9D00A19D30 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -275,6 +293,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -339,6 +358,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PresentIO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.borrega.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -350,6 +370,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PresentIO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.borrega.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -369,6 +390,7 @@
 				);
 				INFOPLIST_FILE = PresentIOTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.borrega.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PresentIO.app/Contents/MacOS/PresentIO";
 			};
@@ -385,6 +407,7 @@
 				);
 				INFOPLIST_FILE = PresentIOTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.borrega.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PresentIO.app/Contents/MacOS/PresentIO";
 			};
@@ -409,6 +432,7 @@
 				A240ADFC1AA11D9D00A19D30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A240ADFD1AA11D9D00A19D30 /* Build configuration list for PBXNativeTarget "PresentIOTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +441,7 @@
 				A240ADFF1AA11D9D00A19D30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
