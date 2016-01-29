@@ -30,6 +30,10 @@ extension CGFloat {
 }
 
 extension NSSize {
+    init(fromCGSize size:CGSize) {
+        self.width = size.width
+        self.height = size.height
+    }
     func rotated() -> NSSize {
         return NSSize(width: self.height, height: self.width)
     }
@@ -40,6 +44,28 @@ extension NSSize {
         get {
             return self.height >= self.width ? .Portrait : .Landscape
         }
+    }
+    func scaleToFit(targetSize: NSSize) -> NSSize {
+
+        if NSEqualSizes(self, targetSize) {
+            return self
+        }
+        
+        let widthFactor  = targetSize.width / width
+        let heightFactor = targetSize.height / height
+
+        var scaleFactor :CGFloat = 0.0
+        if ( widthFactor < heightFactor ) {
+            scaleFactor = widthFactor
+        } else {
+            scaleFactor = heightFactor
+        }
+        
+        let scaledWidth  = width  * scaleFactor;
+        let scaledHeight = height * scaleFactor;
+        
+        return NSSize(width: scaledWidth, height: scaledHeight)
+        
     }
 }
 extension NSPoint {

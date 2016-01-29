@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
 
         let size = DeviceUtils(deviceType: .iPhone).skinSize
-        let frame = DeviceUtils.getCenteredRect(size)
+        let frame = DeviceUtils.getCenteredRect(size, screenFrame: NSScreen.mainScreen()!.frame)
         
         let window = NSWindow(contentRect: frame,
             styleMask: NSBorderlessWindowMask | NSResizableWindowMask,

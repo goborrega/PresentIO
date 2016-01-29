@@ -96,11 +96,10 @@ class DeviceUtils {
         }
     }
     
-    class func getCenteredRect(windowSize : NSSize) -> NSRect{
-        let screenFrame = NSScreen.mainScreen()?.frame
+    class func getCenteredRect(windowSize : NSSize, screenFrame: NSRect) -> NSRect{
         let origin = NSPoint(
-            x: screenFrame!.width / 2 - windowSize.width / 2,
-            y: screenFrame!.height / 2 - windowSize.height / 2 )
+            x: screenFrame.width / 2 - windowSize.width / 2,
+            y: screenFrame.height / 2 - windowSize.height / 2 )
 
 
         return NSRect(origin: origin, size: windowSize)

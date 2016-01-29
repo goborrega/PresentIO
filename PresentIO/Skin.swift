@@ -72,7 +72,7 @@ class Skin: NSView {
         }
         
     }
-
+    
     
     private func loadSkinFromNib(skin : String) {
         
@@ -99,7 +99,7 @@ class Skin: NSView {
             
             //self.session?.startRunning()
             
-           
+            
         }
     }
     
@@ -146,7 +146,7 @@ class Skin: NSView {
                 
                 do {
                     let newDeviceInput = try AVCaptureDeviceInput(device: newValue)
-                
+                    
                     self.session.sessionPreset = AVCaptureSessionPresetHigh
                     self.session.addInput(newDeviceInput)
                     self.input = newDeviceInput
@@ -182,7 +182,7 @@ class Skin: NSView {
         return CMVideoDimensions(width: 0,height: 0)
     }
     
-
+    
     
     
     func updateAspect() {
@@ -196,23 +196,34 @@ class Skin: NSView {
                 self.device.videDimensions = dimensions
                 self.loadSkinForDevice()
                 
-                let size = self.device.getSkinSize()
-                var windowSize = self.window!.frame.size //self.device.getWindowSize()
-                windowSize = windowSize.orientation != self.device.orientation ? windowSize.rotated() : windowSize
-
-                let screenFrame = NSScreen.mainScreen()?.frame
-                
-                
-                centerWindow(windowSize)
-               
-                updateViewsToWindow(windowSize)
-                
-                self.window!.setFrame(NSRect(origin: CGPoint(), size: windowSize), display: true)
+                if (self.window != nil) {
+                    var windowSize = self.window!.frame.size //self.device.getWindowSize()
+                    windowSize = windowSize.orientation != self.device.orientation ? windowSize.rotated() : windowSize
+                    
+                    
+                    // Calculate new size to fit screen
+                    var screenFrame = self.window!.screen!.visibleFrame
+                    screenFrame.size.height -= 50
+                    screenFrame.size.width -= 50
+                    let scaledToScreenSize = NSSize(fromCGSize: windowSize).scaleToFit(screenFrame.size)
+                    
+                    // Center the window on screen
+                    centerWindow(scaledToScreenSize)
+                    
+                    // Resize the internal view to the calculated size / rect
+                    updateViewsToWindow(scaledToScreenSize)
+                }
             }
             return
             
         }
         
+    }
+    
+    func centerWindow(windowSize : NSSize) {
+        self.window!.aspectRatio = windowSize
+        self.window!.setFrame(DeviceUtils.getCenteredRect(windowSize, screenFrame: self.window!.screen!.frame), display:true)
+        // self.window?.center() does not work
     }
     
     func updateViewsToWindow(windowSize : NSSize) {
@@ -235,13 +246,13 @@ class Skin: NSView {
         
         self.previewView.translatesAutoresizingMaskIntoConstraints = true
         self.previewView.setFrameSize(size)
-
+        
         let origin = NSPoint(
             x: windowSize.width / 2 - size.width / 2,
             y: windowSize.height / 2 - size.height / 2)
         
         self.previewView.setFrameOrigin(origin)
-
+        
         self.videoPreviewLayer?.frame = self.previewView.bounds
         
         self.needsDisplay = true
@@ -254,18 +265,7 @@ class Skin: NSView {
             options: [NSTrackingAreaOptions.ActiveAlways, .MouseEnteredAndExited], owner: self, userInfo: nil)
         self.addTrackingArea(trackingArea!)
     }
-    
-    func centerWindow(windowSize : NSSize) {
-        
-        // Center window
-        let screenFrame = NSScreen.mainScreen()?.frame
-        let origin = NSPoint(
-            x: screenFrame!.width / 2 - windowSize.width / 2,
-            y: screenFrame!.height / 2 - windowSize.height / 2 )
-        self.window!.aspectRatio = windowSize
-        self.window!.setFrame(DeviceUtils.getCenteredRect(windowSize), display:true)
-        
-    }
+
     
     func displayError(error: NSError?) {
         dispatch_async(dispatch_get_main_queue(), {
@@ -281,22 +281,22 @@ class Skin: NSView {
         self.ownerWindow = nil
     }
     
-
     
-//    override func drawRect(dirtyRect: NSRect) {
-//        super.drawRect(dirtyRect)
-//        
-//        NSColor.grayColor().set()
-//
-//        var mySimpleRect = NSMakeRect(0, 0, self.bounds.size.width, self.bounds.size.height)
-//        NSRectFill(mySimpleRect)
-//
-//        NSColor.redColor().set()
-//        mySimpleRect = NSMakeRect(self.deviceFrameImage.bounds.origin.x + 4, self.deviceFrameImage.bounds.origin.y + 4, self.deviceFrameImage.bounds.size.width-8, self.deviceFrameImage.bounds.size.height-8)
-//        NSRectFill(mySimpleRect)
-//        
-//        self.needsDisplay = true
-//    }
+    
+    //    override func drawRect(dirtyRect: NSRect) {
+    //        super.drawRect(dirtyRect)
+    //
+    //        NSColor.grayColor().set()
+    //
+    //        var mySimpleRect = NSMakeRect(0, 0, self.bounds.size.width, self.bounds.size.height)
+    //        NSRectFill(mySimpleRect)
+    //
+    //        NSColor.redColor().set()
+    //        mySimpleRect = NSMakeRect(self.deviceFrameImage.bounds.origin.x + 4, self.deviceFrameImage.bounds.origin.y + 4, self.deviceFrameImage.bounds.size.width-8, self.deviceFrameImage.bounds.size.height-8)
+    //        NSRectFill(mySimpleRect)
+    //
+    //        self.needsDisplay = true
+    //    }
     
     override func mouseEntered(theEvent: NSEvent) {
         self.resizeHandle.hidden = false
