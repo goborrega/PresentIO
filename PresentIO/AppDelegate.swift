@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     func saveDeviceSettings() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.deviceSettings, toFile: Device.ArchiveURL.path!)
         if !isSuccessfulSave {
-            print("Failed to save device settings...")
+            NSLog("Failed to save device settings.")
         }
         deviceSettingsLoaded = true
     }
@@ -97,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         notifications.registerObserver(AVCaptureSessionRuntimeErrorNotification, forObject: session, dispatchAsyncToMainQueue: true, block: {note in
             let err = note.userInfo![AVCaptureSessionErrorKey] as! NSError
             //self.window.presentError( err )
-            print(err)
+            NSLog(err.description)
         })
         
         

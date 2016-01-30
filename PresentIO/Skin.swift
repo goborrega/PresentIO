@@ -414,7 +414,6 @@ class Skin: NSView {
             } else {
                 self.deviceSettings!.landscapeRect = window!.frame
             }
-            Swift.print("Updating settings to \(window!.frame)")
         }
         saveDeviceSettins()
 
