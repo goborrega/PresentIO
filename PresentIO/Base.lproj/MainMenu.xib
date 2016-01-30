@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,6 +13,9 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PresentIO" customModuleProvider="target">
             <connections>
+                <outlet property="menuDevice" destination="bib-Uj-vzu" id="hqE-Q0-dgY"/>
+                <outlet property="menuItemDevice" destination="dMs-cI-mzQ" id="z6k-WA-dju"/>
+                <outlet property="menuItemFit" destination="DVo-aG-piG" id="qNb-mW-P6o"/>
                 <outlet property="window" destination="bMR-WN-gwi" id="3NW-W0-8pn"/>
             </connections>
         </customObject>
@@ -67,23 +70,9 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Device" id="bib-Uj-vzu">
                         <items>
-                            <menuItem title="Close" keyEquivalent="w" id="DVo-aG-piG">
+                            <menuItem title="Fit to screen" keyEquivalent="f" id="DVo-aG-piG">
                                 <connections>
-                                    <action selector="performClose:" target="-1" id="HmO-Ls-i7Q"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem isSeparatorItem="YES" id="aJh-i4-bef"/>
-                        </items>
-                    </menu>
-                </menuItem>
-                <menuItem title="View" id="H8h-7b-M4v">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="View" id="HyV-fh-RgO">
-                        <items>
-                            <menuItem title="Show Toolbar" keyEquivalent="t" id="snW-S8-Cw5">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
-                                <connections>
-                                    <action selector="toggleToolbarShown:" target="-1" id="BXY-wc-z0C"/>
+                                    <action selector="fitToScreen:" target="Voe-Tx-rLC" id="hnS-y6-7qS"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -139,13 +128,13 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <rect key="contentRect" x="0.0" y="199" width="232" height="239"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
-            <value key="minSize" type="size" width="408" height="82"/>
+            <value key="minSize" type="size" width="232" height="239"/>
             <view key="contentView" id="Kgw-gr-rpU">
                 <rect key="frame" x="0.0" y="-5" width="232" height="239"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="I3J-Ee-YGQ">
-                        <rect key="frame" x="26" y="87" width="180" height="17"/>
+                        <rect key="frame" x="28" y="87" width="176" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Searching for iOS devices..." id="ARA-JJ-HKJ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -160,8 +149,8 @@
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="PresentIO-icon" id="LJX-Wl-N3i"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocB-AK-1IQ">
-                        <rect key="frame" x="10" y="20" width="212" height="59"/>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ocB-AK-1IQ">
+                        <rect key="frame" x="19" y="20" width="195" height="59"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="59" id="zCd-Lg-bhq"/>
                         </constraints>
@@ -181,7 +170,7 @@
                     <constraint firstItem="ocB-AK-1IQ" firstAttribute="top" secondItem="I3J-Ee-YGQ" secondAttribute="bottom" constant="8" symbolic="YES" id="f1m-Fh-ebc"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="575" y="654.5"/>
+            <point key="canvasLocation" x="601" y="713.5"/>
         </window>
     </objects>
     <resources>

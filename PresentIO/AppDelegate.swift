@@ -12,9 +12,13 @@ import AVFoundation
 import AVKit
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     @IBOutlet var window: NSWindow!
+    
+    @IBOutlet weak var menuItemDevice: NSMenuItem!
+    @IBOutlet weak var menuDevice: NSMenu!
+    @IBOutlet weak var menuItemFit: NSMenuItem!
     
     var session : AVCaptureSession = AVCaptureSession()
 
@@ -24,9 +28,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var deviceSettings : [Device] = []
     var deviceSettingsLoaded = false
+    
+    var selectedDevice : Skin? {
+        didSet {
+            updateMenu()
+        }
+    }
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
 
+        self.selectedDevice = nil
+        
         // Opt-in for getting visibility on connected screen capture devices (iphone/ipad)
         DeviceUtils.registerForScreenCaptureDevices()
         
@@ -36,6 +48,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //self.session.startRunning()
         
         self.refreshDevices()
+        
+        
        
     }
     
@@ -48,6 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         deviceSettingsLoaded = true
     }
+    
     
     func saveDeviceSettings() {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.deviceSettings, toFile: Device.ArchiveURL.path!)
@@ -152,7 +167,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // A new device connected?
         for device in self.devices {
-            
             if device.modelID == "iOS Device" {
                 if (!self.deviceSessions.keys.contains(device)) {
                     self.deviceSessions[device] = startNewSession(device)
@@ -165,16 +179,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
            self.window!.makeKeyAndOrderFront(NSApp)
         }
-        
-//        self.session.beginConfiguration()
-//        
-//        if( self.selectedDevice != nil && !contains(self.devices, self.selectedDevice!)) {
-//            self.selectedDevice = nil
-//        }
-//        
-//        self.session.commitConfiguration()
+
         
     }
+    
+    func updateMenu() {
+
+        if(self.selectedDevice != nil) {
+            menuDevice.title = selectedDevice!.deviceSettings!.name
+            menuItemDevice.enabled = true
+        } else {
+            menuDevice.title = "No Device connected"
+            menuItemDevice.enabled = false
+        }
+    }
+
+    
+    @IBAction func fitToScreen(sender: AnyObject) {
+        self.selectedDevice?.scaleToFit(true)
+    }
+    
+    func menuNeedsUpdate(menu: NSMenu) {
+        updateMenu()
+    }
+    
     
     
 
