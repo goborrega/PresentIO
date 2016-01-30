@@ -24,8 +24,7 @@ class Device: NSObject, NSCoding {
         static let landscapeRectKey = "l_rect"
     }
     
-    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("devices")
+    static let ArchivePath = NSHomeDirectory().stringByAppendingString("/devices")
 
     convenience init?(fromDevice device: AVCaptureDevice) {
         self.init(name: device.localizedName, uid: device.uniqueID, portraitRect:NSRect(), landscapeRect:NSRect())

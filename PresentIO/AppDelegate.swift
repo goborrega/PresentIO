@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
     
     func loadDeviceSettings() {
-        let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(Device.ArchiveURL.path!) as? [Device]
+        let loaded = NSKeyedUnarchiver.unarchiveObjectWithFile(Device.ArchivePath) as? [Device]
         if loaded != nil {
             self.deviceSettings = loaded!
         } else {
@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     
     
     func saveDeviceSettings() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.deviceSettings, toFile: Device.ArchiveURL.path!)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.deviceSettings, toFile: Device.ArchivePath)
         if !isSuccessfulSave {
             NSLog("Failed to save device settings.")
         }
@@ -165,13 +165,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             }
         }
         
+        
         // A new device connected?
         for device in self.devices {
             if device.modelID == "iOS Device" {
                 if (!self.deviceSessions.keys.contains(device)) {
-                    self.deviceSessions[device] = startNewSession(device)
-                }
+                    
+                    // support only one session for now, until multiple devices videos start working
+                    if(self.deviceSessions.count > 0) {
+                        print("Only one session supported.")
+                        let alert = NSAlert()
+                        alert.messageText = "Only one device supported"
+                        alert.addButtonWithTitle("OK")
+                        alert.informativeText = "You can only display one device at a time. Please disconnect your other device."
+                        alert.runModal()
+
+                        break;
+                    } else {
+                        self.deviceSessions[device] = startNewSession(device)
+                    }
             }
+        }
         }
 
         if self.deviceSessions.count > 0 {

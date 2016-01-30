@@ -95,7 +95,9 @@ class Skin: NSView {
             let previewViewLayer = self.previewView.layer
             previewViewLayer!.backgroundColor = CGColorGetConstantColor(kCGColorBlack)
             
+            /* ADDING CONNECTION LATER            self.videoPreviewLayer = AVCaptureVideoPreviewLayer(sessionWithNoConnection: self.session) */
             self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
+            
             self.videoPreviewLayer!.frame = previewViewLayer!.bounds
             self.videoPreviewLayer!.autoresizingMask = [CAAutoresizingMask.LayerWidthSizable, CAAutoresizingMask.LayerHeightSizable]
             self.videoPreviewLayer!.videoGravity = AVLayerVideoGravityResizeAspect
@@ -125,7 +127,9 @@ class Skin: NSView {
         let previewViewLayer = self.previewView.layer
         previewViewLayer!.backgroundColor = CGColorGetConstantColor(kCGColorWhite)
         
+        /* ADDING CONNECTION LATER        self.videoPreviewLayer = AVCaptureVideoPreviewLayer(sessionWithNoConnection: self.session) */
         self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: self.session)
+        
         self.videoPreviewLayer!.frame = previewViewLayer!.bounds
         //newPreviewLayer.autoresizingMask = CAAutoresizingMask.LayerWidthSizable | CAAutoresizingMask.LayerHeightSizable
         self.videoPreviewLayer!.videoGravity = AVLayerVideoGravityResize
@@ -157,6 +161,14 @@ class Skin: NSView {
                     self.session.sessionPreset = AVCaptureSessionPresetHigh
                     self.session.addInput(newDeviceInput)
                     self.input = newDeviceInput
+                    
+                    /* ADDING CONNECTION LATER
+                    let port = self.input?.ports.first as? AVCaptureInputPort?
+                    let connection = AVCaptureConnection(inputPort: port!, videoPreviewLayer: self.videoPreviewLayer)
+                    if(self.videoPreviewLayer?.session.canAddConnection(connection) == true) {
+                    self.videoPreviewLayer!.session.addConnection(connection)
+                    }
+                    */
                     
                     // Register for notifications in format change which imply orientation change
                     self.notifications.registerObserver(AVCaptureInputPortFormatDescriptionDidChangeNotification, dispatchAsyncToMainQueue: true, block: {notif in
@@ -323,20 +335,23 @@ class Skin: NSView {
             }
             
             if ++self.deviceInitializationRetries < self.deviceInitializationMaxRetries {
-                NSLog("Port is empty. Screen may be blank. Reinitializing device")
-                self.session.stopRunning()
-                self.selectedDevice = self.input!.device
-                self.session.startRunning()
+                if( self.input != nil) {
+                    NSLog("Port is empty. Screen may be blank. Reinitializing device")
+                    self.session.stopRunning()
+                    self.selectedDevice = self.input!.device
+                    self.session.startRunning()
+                }
                 
             } else {
                 NSLog("Port still empty after \(self.deviceInitializationRetries) tries. Shutting down session")
-                
-                let alert = NSAlert()
-                alert.messageText = "Error streaming device"
-                alert.addButtonWithTitle("OK")
-                alert.informativeText = "We were unable to connect to your device's video stream. Please try reconnecting the lightning cable."
-                alert.beginSheetModalForWindow(self.window!, completionHandler: nil )
-                self.endSession()
+                if( self.window != nil) {
+                    let alert = NSAlert()
+                    alert.messageText = "Error streaming device"
+                    alert.addButtonWithTitle("OK")
+                    alert.informativeText = "We were unable to connect to your device's video stream. Please try reconnecting the lightning cable."
+                    alert.beginSheetModalForWindow(self.window!, completionHandler: nil )
+                    self.endSession()
+                }
             }
             
         }
@@ -416,7 +431,7 @@ class Skin: NSView {
             }
         }
         saveDeviceSettins()
-
+        
     }
     func getDeviceSettings(device: AVCaptureDevice) {
         self.deviceSettings = appDelegate.findDeviceSettings(device)

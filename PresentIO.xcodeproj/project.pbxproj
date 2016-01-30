@@ -49,6 +49,7 @@
 		A2AF97911AC7E65A0052CB76 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A2BEAB7C1AAAEB1F00FDFC72 /* NotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		A2BEAB801AAD0A9900FDFC72 /* Skin.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
+		A2CB95161C5CC11800E90DD6 /* PresentIO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PresentIO.entitlements; sourceTree = "<group>"; };
 		A2FD12DF1C5BC1210056244E /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,17 +96,18 @@
 		A240ADDD1AA11D9D00A19D30 /* PresentIO */ = {
 			isa = PBXGroup;
 			children = (
+				A2CB95161C5CC11800E90DD6 /* PresentIO.entitlements */,
 				A240ADE01AA11D9D00A19D30 /* AppDelegate.swift */,
 				A2820E681AAE538000393CAA /* Skin.swift */,
 				A240ADE91AA11D9D00A19D30 /* MainMenu.xib */,
 				A2BEAB801AAD0A9900FDFC72 /* Skin.xib */,
 				A25AC01A1ABB74BD00DC1AB4 /* Skin_iPad.xib */,
 				A240AE0C1AA304B200A19D30 /* DeviceUtils.swift */,
+				A2FD12DF1C5BC1210056244E /* Device.swift */,
 				A2BEAB7C1AAAEB1F00FDFC72 /* NotificationManager.swift */,
+				A2AF97911AC7E65A0052CB76 /* Extensions.swift */,
 				A240ADE71AA11D9D00A19D30 /* Images.xcassets */,
 				A240ADDE1AA11D9D00A19D30 /* Supporting Files */,
-				A2AF97911AC7E65A0052CB76 /* Extensions.swift */,
-				A2FD12DF1C5BC1210056244E /* Device.swift */,
 			);
 			path = PresentIO;
 			sourceTree = "<group>";
@@ -187,6 +189,11 @@
 					A240ADDA1AA11D9D00A19D30 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = YL46A6266C;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					A240ADEF1AA11D9D00A19D30 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -360,10 +367,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PresentIO/PresentIO.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PresentIO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gborrega.presentio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -373,10 +382,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PresentIO/PresentIO.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = PresentIO/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gborrega.presentio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
