@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
     </dependencies>
@@ -16,10 +16,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <view wantsLayer="YES" id="Lma-TF-kFe">
             <rect key="frame" x="0.0" y="0.0" width="435" height="646"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vqy-CN-NNN">
-                    <rect key="frame" x="0.0" y="-38" width="435" height="721"/>
+                    <rect key="frame" x="0.0" y="0.0" width="435" height="646"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="iPad_white" id="pQD-qN-Pr5"/>
                 </imageView>
                 <customView autoresizesSubviews="NO" wantsLayer="YES" canDrawConcurrently="YES" focusRingType="none" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XdJ-Cc-xK7">
@@ -31,15 +31,15 @@
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="9bm-0Q-XJY" secondAttribute="bottom" id="Hik-iF-Jxm"/>
-                <constraint firstAttribute="trailing" secondItem="9bm-0Q-XJY" secondAttribute="trailing" id="qnu-pe-uOj"/>
+                <constraint firstAttribute="trailing" secondItem="9bm-0Q-XJY" secondAttribute="trailing" id="sRT-Bm-RYY"/>
+                <constraint firstAttribute="bottom" secondItem="9bm-0Q-XJY" secondAttribute="bottom" id="uDd-0v-f2Q"/>
             </constraints>
             <point key="canvasLocation" x="392.5" y="318.5"/>
         </view>
         <userDefaultsController representsSharedInstance="YES" id="nmt-Kz-kBN"/>
     </objects>
     <resources>
-        <image name="iPad_white" width="1326.109130859375" height="1963.6363525390625"/>
+        <image name="iPad_white" width="1013" height="1500"/>
         <image name="resize-handle" width="12" height="12"/>
     </resources>
 </document>

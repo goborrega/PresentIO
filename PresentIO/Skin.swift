@@ -228,7 +228,7 @@ class Skin: NSView {
                 self.loadSkinForDevice()
                 
                 if (self.window != nil) {
-                    var windowSize = self.window!.frame.size //self.device.getWindowSize()
+                    var windowSize = self.device.getWindowSize() //self.window!.frame.size //self.device.getWindowSize()
                     windowSize = windowSize.orientation != self.device.orientation ? windowSize.rotated() : windowSize
                     
                     if (    self.deviceSettings != nil
