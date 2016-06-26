@@ -264,13 +264,14 @@ class Skin: NSView {
     
     func scaleToFit(forgetSettings:Bool) {
         
-        updateAspect(true)
-        
         if forgetSettings {
             self.deviceSettings?.portraitRect = NSRect()
             self.deviceSettings?.landscapeRect = NSRect()
             saveDeviceSettins()
         }
+        
+        updateAspect(true)
+        
     }
     
     func centerWindow(windowSize : NSSize) {
