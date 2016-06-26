@@ -18,6 +18,11 @@ With PresentIO, you don't need a Wi-Fi or Bluetooth connection to flawlessly sha
   - Live demos in front of hundreds of people all clobbering your access point
 
 ===
+
+### Download application
+Download version 1.0 of the app, already built and signed, from http://bit.ly/PresentIO-1-0
+
+===
 #### Donate
 Help me supporting new OS versions and adding cool new features
 
