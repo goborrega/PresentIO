@@ -16,3 +16,10 @@ With PresentIO, you don't need a Wi-Fi or Bluetooth connection to flawlessly sha
   - When you don't have a Wi-Fi network available, or your customer won't let you on theirs
   - Doing a demo of your app's offline capabilities
   - Live demos in front of hundreds of people all clobbering your access point
+
+===
+#### Donate
+Help me supporting new OS versions and adding cool new features
+
+<a href='https://pledgie.com/campaigns/32065'><img alt='Click here to lend your support to: PresentIO and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/32065.png?skin_name=chrome' border='0' ></a>
+
