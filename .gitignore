@@ -1,3 +1,5 @@
 
-*.xcbkptlist
 Assets*
+*.xcbkptlist
+
+PresentIO.xcodeproj/xcuserdata/gfb.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
