@@ -3,7 +3,7 @@ PresentIO is a lightweight Mac app (OS X Yosemite or newer) that allows you to m
 
 There is nothing to install. Simply connect your device via a Lightning cable and you're ready to go.
 
-![PresentIO streaming via lightning cable](https://dl.dropboxusercontent.com/u/13504355/PresentIO/PresentIO_small.jpg)
+![PresentIO streaming via lightning cable](http://www.goborrega.com/wp-content/uploads/2016/12/PresentIO_small.jpg)
 
 ### No Install. No Network. No Problem.
 You've no doubt used other network-based approaches to mirroring. 
@@ -20,7 +20,7 @@ With PresentIO, you don't need a Wi-Fi or Bluetooth connection to flawlessly sha
 ===
 
 ### Download application
-Download version 1.0 of the app, already built and signed, from http://bit.ly/PresentIO-1-0
+Download version 1.0 of the app, already built and signed, from http://bit.ly/PresentIO-1-01
 
 ===
 #### Donate
