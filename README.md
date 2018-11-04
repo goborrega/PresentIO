@@ -20,7 +20,7 @@ With PresentIO, you don't need a Wi-Fi or Bluetooth connection to flawlessly sha
 ===
 
 ### Download application
-Download version 1.0 of the app, already built and signed, from http://bit.ly/PresentIO-1-01
+Download version 1.0 of the app, already built and signed, from https://github.com/goborrega/PresentIO/releases/download/1.0/PresentIO.app.zip
 
 ===
 #### Donate a beer
